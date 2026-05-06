@@ -1,0 +1,128 @@
+
+========================================
+程序崩溃时间: 2026-04-29 16:27:30.217214
+错误类型: Exception
+错误信息: Couldn't start the app because 'http://localhost:7860/gradio_api/startup-events' failed (code 502). Check your network or proxy settings to ensure localhost is accessible.
+
+完整错误追踪:
+Traceback (most recent call last):
+  File "C:\Users\zhlco\CodeBuddy\20260423091559\app.py", line 1477, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\zhlco\CodeBuddy\20260423091559\app.py", line 1473, in main
+    demo.launch(server_name="0.0.0.0", server_port=7860)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zhlco\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\gradio\blocks.py", line 2820, in launch
+    raise Exception(
+        f"Couldn't start the app because '{resp.url}' failed (code {resp.status_code}). Check your network or proxy settings to ensure localhost is accessible."
+    )
+Exception: Couldn't start the app because 'http://localhost:7860/gradio_api/startup-events' failed (code 502). Check your network or proxy settings to ensure localhost is accessible.
+
+========================================
+
+========================================
+程序崩溃时间: 2026-04-29 17:38:42.353457
+错误类型: AttributeError
+错误信息: Cannot call load outside of a gradio.Blocks context.
+
+完整错误追踪:
+Traceback (most recent call last):
+  File "C:\Users\zhlco\CodeBuddy\20260423091559\app.py", line 1504, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\zhlco\CodeBuddy\20260423091559\app.py", line 1449, in main
+    demo.load(fn=lambda: None, inputs=None, outputs=None,
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+               js="""
+               ^^^^^^
+    ...<11 lines>...
+    }
+    ^
+    """)
+    ^^^^
+  File "C:\Users\zhlco\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\gradio\events.py", line 717, in event_trigger
+    raise AttributeError(
+        f"Cannot call {_event_name} outside of a gradio.Blocks context."
+    )
+AttributeError: Cannot call load outside of a gradio.Blocks context.
+
+========================================
+
+========================================
+程序崩溃时间: 2026-04-30 14:39:20.903106
+错误类型: OSError
+错误信息: Cannot find empty port in range: 7860-7860. You can specify a different port by setting the GRADIO_SERVER_PORT environment variable or passing the `server_port` parameter to `launch()`.
+
+完整错误追踪:
+Traceback (most recent call last):
+  File "C:\Users\zhlco\CodeBuddy\20260423091559\app.py", line 1565, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\zhlco\CodeBuddy\20260423091559\app.py", line 1561, in main
+    demo.launch(server_name="0.0.0.0", server_port=7860)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zhlco\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\gradio\blocks.py", line 2774, in launch
+    ) = http_server.start_server(
+        ~~~~~~~~~~~~~~~~~~~~~~~~^
+        app=self.app,
+        ^^^^^^^^^^^^^
+    ...<4 lines>...
+        ssl_keyfile_password=ssl_keyfile_password,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\zhlco\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\gradio\http_server.py", line 182, in start_server
+    raise OSError(
+        f"Cannot find empty port in range: {min(server_ports)}-{max(server_ports)}. You can specify a different port by setting the GRADIO_SERVER_PORT environment variable or passing the `server_port` parameter to `launch()`."
+    )
+OSError: Cannot find empty port in range: 7860-7860. You can specify a different port by setting the GRADIO_SERVER_PORT environment variable or passing the `server_port` parameter to `launch()`.
+
+========================================
+
+========================================
+程序崩溃时间: 2026-04-30 15:09:15.477825
+错误类型: AttributeError
+错误信息: module 'gradio' has no attribute 'Form'
+
+完整错误追踪:
+Traceback (most recent call last):
+  File "C:\Users\zhlco\CodeBuddy\20260423091559\app.py", line 1628, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\zhlco\CodeBuddy\20260423091559\app.py", line 1604, in main
+    with gr.Form(elem_classes=["input-card-form"]):
+         ^^^^^^^
+AttributeError: module 'gradio' has no attribute 'Form'
+
+========================================
+
+========================================
+程序崩溃时间: 2026-04-30 16:55:48.791072
+错误类型: OSError
+错误信息: Cannot find empty port in range: 7860-7860. You can specify a different port by setting the GRADIO_SERVER_PORT environment variable or passing the `server_port` parameter to `launch()`.
+
+完整错误追踪:
+Traceback (most recent call last):
+  File "C:\Users\zhlco\CodeBuddy\20260423091559\app.py", line 1800, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\zhlco\CodeBuddy\20260423091559\app.py", line 1796, in main
+    demo.launch(server_name="0.0.0.0", server_port=7860, theme=gr.themes.Default(primary_hue="green", secondary_hue="emerald"), css=css)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zhlco\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\gradio\blocks.py", line 2774, in launch
+    ) = http_server.start_server(
+        ~~~~~~~~~~~~~~~~~~~~~~~~^
+        app=self.app,
+        ^^^^^^^^^^^^^
+    ...<4 lines>...
+        ssl_keyfile_password=ssl_keyfile_password,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\zhlco\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages\gradio\http_server.py", line 182, in start_server
+    raise OSError(
+        f"Cannot find empty port in range: {min(server_ports)}-{max(server_ports)}. You can specify a different port by setting the GRADIO_SERVER_PORT environment variable or passing the `server_port` parameter to `launch()`."
+    )
+OSError: Cannot find empty port in range: 7860-7860. You can specify a different port by setting the GRADIO_SERVER_PORT environment variable or passing the `server_port` parameter to `launch()`.
+
+========================================

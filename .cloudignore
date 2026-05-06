@@ -1,0 +1,6 @@
+chroma_db/
+*.zip
+*.bin
+*.pickle
+*.sqlite3
+output.txt
