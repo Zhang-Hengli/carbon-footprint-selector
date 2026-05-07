@@ -24,7 +24,6 @@ def prepare_documents(df):
     metadatas = []
     
     for idx, row in df.iterrows():
-        # 组合多个字段形成完整描述
         text_parts = []
         metadata = {}
         
@@ -58,7 +57,6 @@ def create_vector_store(documents, ids, metadatas):
     print("正在创建 ChromaDB...")
     chroma_client = chromadb.PersistentClient(path=CHROMA_PATH)
     
-    # 删除已存在的集合
     try:
         chroma_client.delete_collection("ecoinvent")
     except:
@@ -66,13 +64,25 @@ def create_vector_store(documents, ids, metadatas):
     
     collection = chroma_client.create_collection("ecoinvent")
     
-    print("正在存储向量...")
-    collection.add(
-        documents=documents,
-        ids=ids,
-        embeddings=embeddings.tolist(),
-        metadatas=metadatas
-    )
+    # 分批插入，每批最多 5000 条
+    batch_size = 5000
+    total = len(documents)
+    print(f"正在存储向量（共 {total} 条，分批处理）...")
+    
+    for i in range(0, total, batch_size):
+        end_idx = min(i + batch_size, total)
+        batch_docs = documents[i:end_idx]
+        batch_ids = ids[i:end_idx]
+        batch_embs = embeddings[i:end_idx].tolist()
+        batch_metas = metadatas[i:end_idx]
+        
+        collection.add(
+            documents=batch_docs,
+            ids=batch_ids,
+            embeddings=batch_embs,
+            metadatas=batch_metas
+        )
+        print(f"  已存储 {end_idx}/{total} 条")
     
     print(f"向量数据库已保存到 {CHROMA_PATH}")
     return collection
